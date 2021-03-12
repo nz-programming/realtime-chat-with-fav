@@ -149,7 +149,12 @@ const toggleFavorite = (e) => {
 
   } else {
     // TODO: favorites に該当のメッセージをお気に入りとして追加
-
+  firebase
+    .database()
+    .ref(`favorites/${currentUID}/${messageId}`)
+    .set({
+        createdAt: firebase.database.ServerValue.TIMESTAMP,
+      });
   }
 };
 
